@@ -1,2 +1,2 @@
 # vincent-tong.github.io
-bootcamp orientation
+bootcamp repo
