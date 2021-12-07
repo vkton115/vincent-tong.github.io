@@ -78,7 +78,7 @@ function toDashCase(string) {
  */
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
-if (string[0] = char){
+if (string[0] === char.toUpperCase(char)){
     return true;
 } else {
     return false;
@@ -102,7 +102,11 @@ if (string[0] = char){
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+if (string[string.length-1] === char.toLowerCase(char)){
+    return true;
+} else {
+    return false;
+}
 
     // YOUR CODE ABOVE HERE //
 }
@@ -133,7 +137,6 @@ return stringOne + stringTwo;
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
-
 
     // YOUR CODE ABOVE HERE //
 }
@@ -168,7 +171,6 @@ if (stringOne.length > stringTwo.length){
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
 
 
     // YOUR CODE ABOVE HERE //
