@@ -171,7 +171,7 @@ if (stringOne.length > stringTwo.length){
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+    
 
     // YOUR CODE ABOVE HERE //
 }
