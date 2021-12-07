@@ -7,8 +7,8 @@
 4) sudo apt-get install subversion
 5) npm install -g opspark
 6) os install
-7) enter username
-8) enter personal access token
+7) enter username : vkton115
+8) enter personal access token: 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
 
 9) (optional) use "os test" to test if your code is passing tests. use ctrl c after to get back to your terminal
 
