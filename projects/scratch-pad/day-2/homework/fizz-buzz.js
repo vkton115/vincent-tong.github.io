@@ -12,8 +12,10 @@
 */
 function fizzBuzz() {
     // YOUR CODE GOES BELOW HERE //
-
-
+    var num = [];
+    for (var i = 1, i <= 100, i++){
+        return num.push[i];
+    }
 
     // YOUR CODE GOES ABOVE HERE //
 }
