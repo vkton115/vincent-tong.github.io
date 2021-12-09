@@ -23,9 +23,11 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
+    var rangeArray = [];
+    while (start < end){
+        rangeArray.push(start);
+        start = start++;
+    }
     
     // YOUR CODE GOES ABOVE HERE //
 }
