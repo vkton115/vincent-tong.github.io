@@ -13,7 +13,13 @@
  */
 function createGreaterThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function(value){
+        if (value > base){
+            return true;
+        } else {
+            return false;
+        }
+    }   
     
     
     
@@ -27,7 +33,13 @@ function createGreaterThanFilter(base) {
  */
 function createLessThanFilter(base) {
     // YOUR CODE BELOW HERE //
-    
+    return function(value){
+        if (value < base){
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     
@@ -41,7 +53,15 @@ function createLessThanFilter(base) {
  */
 function createStartsWithFilter(startsWith) {
     // YOUR CODE BELOW HERE //
-    
+    return function(string){
+        var lowerCaseString = string.toLowerCase();
+        var lowerCaseStartsWith = startsWith.toLowerCase();
+        if (lowerCaseStartsWith == lowerCaseString[0]){
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     
@@ -55,8 +75,15 @@ function createStartsWithFilter(startsWith) {
  */
 function createEndsWithFilter(endsWith) {
     // YOUR CODE BELOW HERE //
-    
-    
+    return function(string){
+        var lowerCaseString = string.toLowerCase();
+        var lowerCaseEnd = endsWith.toLowerCase();
+        if (lowerCaseEnd == lowerCaseString[lowerCaseString.length-1]){
+            return true;
+        } else {
+            return false;
+        }
+    }
     
     
     // YOUR CODE ABOVE HERE //
@@ -71,9 +98,12 @@ function createEndsWithFilter(endsWith) {
  */
 function modifyStrings(strings, modify) {
     // YOUR CODE BELOW HERE //
+    var modArray = [];
+    for (var i = 0; i < strings.length; i++){
+        modArray.push(modify(strings[i]));
+    } return modArray;
     
-    
-    
+
     
     // YOUR CODE ABOVE HERE //
 }
@@ -89,7 +119,7 @@ function modifyStrings(strings, modify) {
  */
 function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
-    
+
     
     
     
