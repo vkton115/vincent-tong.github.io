@@ -117,20 +117,19 @@ function modifyStrings(strings, modify) {
  * 
  * TIP: You need to loop over the Strings, right? And pass them to the test?
  */
-function allStringsPass(strings, test) {
+ function allStringsPass(strings, test) {
     // YOUR CODE BELOW HERE //
     for (var i = 0; i < strings.length; i++){
-        if (test(strings[i]) == true){
-            return true;
-        } else {
+        //pass current array value to the test function
+        if (test(strings[i]) === false){
             return false;
-        }
+        } 
     }
-    
-    
+    return true; // dont put it in the for loop because you want the test to run through each index of the strings array. you do not want it to end the function early with the 'return'
     
     // YOUR CODE ABOVE HERE //
 }
+
 
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 if((typeof process !== 'undefined') &&
