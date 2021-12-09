@@ -21,16 +21,24 @@
  *  b. you'll need a loop, which one is best?
  *  c. you'll wanna make use of the push() method of Array.
  */
-function range(start, end) {
+ function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
     var rangeArray = [];
-    while (start < end){
-        rangeArray.push(start);
-        start = start++;
+    if (start <= end){
+        while(start <= end){
+            rangeArray.push(start);
+            start++;
+        } return rangeArray;
+    } else if (start >= end){
+        while(start >= end){
+            rangeArray.push(start);
+            start--;
+        } return rangeArray;
     }
-    
     // YOUR CODE GOES ABOVE HERE //
 }
+
+
 
 
 
