@@ -82,8 +82,8 @@ function typeOf(value) {
           return "array";
         } else if (typeof value !== "object"){
             return typeof value;
-        } else if (typeof value !== "null"){
-            return typeof value;
+        } else if (typeof value instanceof Null){
+            return "null";
         } else {
             return "date";
         }
