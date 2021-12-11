@@ -59,12 +59,26 @@ function makeContactList(){
         },
         findContact: function(fullName) {
             for (var i = 0; i < contacts.length; i++){
-                if (String(fullName) === contacts[i]){
-                    
+                if (fullName === contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]){
+                    return contacts[i];
+                } else {
+                    return undefined;
                 }
-            } return contacts;
+            }
         },
-
+        removeContact: function(contact){
+            for (var i = 0; i < contacts.length; i++){
+                if (contact === contacts[i]){
+                    return contacts.splice(i, 1);
+                }
+            }
+        },
+        printAllContactNames: function(){
+            var nameList = [];
+            for (var i = 1; i < contacts.length; i++){
+            nameList = nameList + ("\n" +contacts[i]["nameFirst"] + " " + contacts[i]["nameLast"]);
+            } return contacts[0]["nameFirst"] + " " + contacts[0]["nameLast"] + nameList;
+        }
     }
 }
 
