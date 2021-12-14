@@ -62,12 +62,39 @@ console.log(animal);
 //////////////////////////////////////////////////////////////////////
 var animals = [];
 animals.push(animal); 
+console.log(animals);
+//adding duck//
+var duck = {
+  species: "duck",
+  name: "Jerome",
+  noises: ["quack", "honk", "sneeze", "woosh"]
+}
+animals.push(duck);
+console.log(animals);
 
+//new animal #1//
+var cat = {
+  species: "feline",
+  name: "Whiskers",
+  noises: ["Meow", "Purr"]
+}
+animals.push(cat);
+//new animal #2//
+var horse = {
+  species: "horse",
+  name: "Sea Biscuit",
+  noises: ["Neigh", "Whinny"]
+}
+animals.push(horse);
+console.log(animals);
 
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+var friends = [];
+function getRandom(animals){
+  return Math.floor(Math.random() * animals.length);
+}
 
 
 /**
