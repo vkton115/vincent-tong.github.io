@@ -26,21 +26,39 @@ function search(animalsArr, animalName){
 //////////////////////////////////////////////////////////////////////
 // Step 2 - Replace //////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function replace(animals, name, replacement){
+    for (var i = 0; i < animals.length; i++){
+        if (animals[i]["name"] === name){
+            animals[i] = replacement;
+        }
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 3 - Remove ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+function remove(animals, name){
+    for (var i = 0; i < animals.length; i++){
+        if (animals[i]["name"] === name){
+            animals.splice(i, i + 1);
+        }
+    }
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Step 4 - Add ///////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
-
-
+function add(animals, animal){
+    for (var i = 0; i < animals.length; i++){
+        if (animal["name"].length > 0 && animal["species"].length > 0 && animal["name"] !== animals[i]["name"]){
+            animals.push(animal);
+        } else {
+            return animals;
+        }
+    }
+}
 /**
  * You did it! You're all done with Matchy!
  */
