@@ -95,6 +95,10 @@ var friends = [];
 function getRandom(animals){
   return Math.floor(Math.random() * animals.length);
 }
+friends.push(animals[getRandom(animals)].name);
+animal["friends"] = friends; 
+console.log(friends);
+console.log(animals);
 
 
 /**
