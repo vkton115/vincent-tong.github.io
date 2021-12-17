@@ -21,7 +21,7 @@ function fizzBuzz() {
     if (i % 15 === 0){
       console.log("fizzbuzz");
     } else if (i % 3 === 0){
-      console.log("fizz");
+      console.log("Fizz");
     } else if (i % 5 === 0){
       console.log("buzz");
     } else {
@@ -34,16 +34,39 @@ function fizzBuzz() {
 ////////////////////////////////////////////////////////////////////////////////
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
-function drawChessboard(size) {
-  var str = "#";
-for (var row = 1; i <= size; i++){
-  if (i === size){
-    str = str += "\n";
-    console.log(str);
-  } else if (i % 2 !== 0)
-
-console.log(drawChessboard(16));
+//I: a number representing how many columns and rows.
+//O: a string of alternating spaces and hashes depending on their placement on board
+//C: output string must have linebreaks
+//E: N/A
+function drawChessboard(x) {
+  var chessBoard = [];
+  for (let i = 0; i < x; i++){
+    let row;
+    if (i % 2 === 0){
+      row = " ";
+      //create looping sequence to continue adding characters
+      for (let i = 1; i < x; i++){
+        if (i % 2 === 0){
+          row += " ";
+        } else{
+          row += "#";
+        }
+      }
+    } else {
+      row = "#";
+      for (let i = 1; i < x; i++){
+        if (i % 2 === 0){
+          row += "#";
+        } else {
+          row += " ";
+        }
+      }
+    }
+    chessBoard.push(row);
+  }
+  return chessBoard.join("\n") + "\n";
+}
+console.log(drawChessboard(8));
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
