@@ -146,21 +146,23 @@ function isFriend(name, object) {
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function nonFriends(name, array) {
-    var nonFriendsArr = [];
-    for (var key in array){
-        if (name = array["name"]){
-            if (array["friends"])
+function nonFriends(name, list) {
+    notFriends = [];
+    for (let i = 0; i < list.length; i++){
+        if (name !== list[i].name){
+            for (let x = 0; x < list[i].friends.length; x++){
+                if (list[i].friends[x] === name){
+                } 
+            }
         }
-    }
-
+    } return notFriends;
 }
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-
+    
 }
 
 //////////////////////////////////////////////////////////////////////
