@@ -146,24 +146,36 @@ function isFriend(name, object) {
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function nonFriends(name, list) {
-    notFriends = [];
-    for (let i = 0; i < list.length; i++){
-        if (name !== list[i].name){
-            for (let x = 0; x < list[i].friends.length; x++){
-                if (list[i].friends[x] === name){
-                } 
-            }
+function nonFriends(name, list){
+    var names = [];
+    var notFriends = [];
+    var current = null;
+    for(var i = 0; i < list.length; i++){
+        if(name === list[i].name){
+            current = list[i];
+        }else{
+            names.push(list[i].name);
         }
-    } return notFriends;
+    }
+
+    for(var i = 0; i <names.length; i++){
+        if(current.friends.indexOf(names[i]) === -1){
+            notFriends.push(names[i]);
+        }
+    }
+
+    return notFriends;
+
 }
+
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 function updateObject(object, key, value) {
-    
-}
+    object[key] = value;
+    return object;
+  }
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
@@ -178,7 +190,12 @@ function removeProperties(object, array) {
 //////////////////////////////////////////////////////////////////////
 
 function dedup(array) {
-
+    removedArr = [];
+    for (let i = 0; i < array.length; i++){
+        if (!(removedArr.includes(array[i]))){
+            removedArr.push(array[i]);
+        }
+    } return removedArr;
 }
 
 //////////////////////////////////////////////////////////////////////
