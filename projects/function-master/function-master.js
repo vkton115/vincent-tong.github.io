@@ -182,8 +182,14 @@ function updateObject(object, key, value) {
 //////////////////////////////////////////////////////////////////////
 
 function removeProperties(object, array) {
-
-}
+    for (var key in object){
+        for (let i = 0; i < array.length; i++){
+            if (key === array[i]){
+                delete object[key];
+            }
+        } 
+    } 
+} 
 
 //////////////////////////////////////////////////////////////////////
 // Function 16 - Dedup ///////////////////////////////////////////////
