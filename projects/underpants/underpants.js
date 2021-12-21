@@ -3,6 +3,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+
 var _ = {};
 
 
@@ -20,7 +21,9 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = function (value){
+    return value;
+}
 
 /** _.typeOf
 * Arguments:
@@ -41,7 +44,20 @@ var _ = {};
 * _.typeOf("javascript") -> "string"
 * _.typeOf([1,2,3]) -> "array"
 */
-
+_.typeOf = function (value) {
+    // YOUR CODE BELOW HERE //
+    if (typeof value !== "object"){
+        return typeof value;
+    } else if (Array.isArray(value)) {
+          return "array";
+    } else if (value === null){
+        return "null";
+    } else if (value instanceof Date === true){
+        return "date";
+    } else if (typeof value === "object") {
+        return "object";
+    }
+}
 
 /** _.first
 * Arguments:
@@ -60,8 +76,18 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
-
+_.first = function(array, number){
+    var numArr = [];
+    if (Array.isArray(array) === false){
+        return [];
+    } else if (Array.isArray(array) === true){
+        if (typeof number === "number" && number > 0){
+            for (let i = 0; i < array.length; i++){
+                numArr.push(array[i]);
+            }
+        } return numArr;
+    } return array[0];
+}
 /** _.last
 * Arguments:
 *   1) An array

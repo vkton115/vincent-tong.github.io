@@ -12,6 +12,11 @@
 
 9) (optional) use "os test" to test if your code is passing tests. use ctrl c after to get back to your terminal
 
+maneuver between lodown submit and gitpod assignments
+cd .. === gets you to directory
+cd lodown
+cd vincent-tong.github.io to go back to gitpod assignments
+
 
 //git command cycle (pushes code to repo *basically your save feature*):
 git add -A
