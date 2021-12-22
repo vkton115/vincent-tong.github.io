@@ -3,6 +3,8 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
 'use strict';
 
+//const { result } = require("lodash");
+
 
 var _ = {};
 
@@ -24,6 +26,7 @@ var _ = {};
 _.identity = function (value){
     return value;
 }
+
 
 /** _.typeOf
 * Arguments:
@@ -76,17 +79,17 @@ _.typeOf = function (value) {
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
+
 _.first = function(array, number){
-    var numArr = [];
     if (Array.isArray(array) === false){
         return [];
-    } else if (Array.isArray(array) === true){
-        if (typeof number === "number" && number > 0){
-            for (let i = 0; i < array.length; i++){
-                numArr.push(array[i]);
-            }
-        } return numArr;
-    } return array[0];
+    } else if (number === NaN || number === undefined){
+        return array[0];
+    } else if (number < 0){
+        return [];
+    } else if (number > 0){
+        return array.slice(0, number);
+    }
 }
 /** _.last
 * Arguments:
@@ -105,7 +108,19 @@ _.first = function(array, number){
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(array, number){
+    if (!(Array.isArray(array))){
+        return [];
+    } else if (typeof number !== "number"){
+        return array[array.length-1]
+    } else if (number < 0){
+        return [];
+    } else if (number > array.length){
+        return array
+    } else if (number < array.length){
+        return array.slice(- number)
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -122,7 +137,9 @@ _.first = function(array, number){
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
+_.indexOf = function (array, value){
 
+}
 
 /** _.contains
 * Arguments:
@@ -155,7 +172,21 @@ _.first = function(array, number){
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
+_.each = function(collection, func) {
+    //determine if collection is array
+    if (Array.isArray(collection)){
+        //iterate through collection
+        for (var i = 0; i < collection.length; i++){
+            //call input function, passing in the current value of array , the current index, and the array as arguments
+            func(collection[i], i, collection);
+        }
+    } else {
+        //iterate through the object
+        for (var key in collection){
+            func(collection[key], key, collection);
+        }
+    }
+}
 
 /** _.unique
 * Arguments:
@@ -234,7 +265,26 @@ _.first = function(array, number){
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function (collection, func){
+    //create output variable
+    outputArr = [];
+    //detemine if collection is an array
+    if(Array.isArray(collection)){
+        //iterate through array
+        for (var i = 0; i < collection.length; i++){
+            //call the input function, passing in the current array value, current index, and collection
+            var result = func(collection[i], i, collection);
+            outputArr.push(result);
+        }
+    } else {
+        for (var key in collection){
+            var result = func(collection[key], key, collection);
+            outputArr.push(result);
+        }
+    }
+    //return output Array
+    return outputArr;
+}
 
 /** _.pluck
 * Arguments:
@@ -268,7 +318,15 @@ _.first = function(array, number){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-
+var every = function (array, func) {
+    // if input function is truthy
+    if (func){
+        //call each array value as an argument on input func, and if any of thoe
+        //expressions return false, function should return false
+    } else {
+        //if any value is false, return false
+    }
+}
 
 /** _.some
 * Arguments:
