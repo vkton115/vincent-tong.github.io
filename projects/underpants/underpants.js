@@ -138,7 +138,11 @@ _.last = function(array, number){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 _.indexOf = function (array, value){
-
+    for (let i = 0; i < array.length; i++){
+        if (array[i] === value){
+            return i;
+        }
+    } return -1
 }
 
 /** _.contains
@@ -155,7 +159,9 @@ _.indexOf = function (array, value){
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
 */
-
+_.contains = function(array, value){
+        return (array.includes(value) ? true : false)
+}
 
 /** _.each
 * Arguments:
@@ -197,6 +203,15 @@ _.each = function(collection, func) {
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+_.unique = function (array){
+    var arr = [];
+    for (let i = 0; i < array.length; i++){
+        if (_.indexOf(arr, array[i]) === -1){
+            arr.push(array[i]);
+        }
+    } return arr;
+}
+
 
 
 /** _.filter
@@ -214,7 +229,14 @@ _.each = function(collection, func) {
 * Extra Credit:
 *   use _.each in your implementation
 */
-
+_.filter = function (array, func){
+    var arr = [];
+    for (let i = 0; i < array.length; i++){
+        if (func(array[i], i, array)){
+            arr.push(array[i]);
+        }
+    } return arr;
+}
 
 /** _.reject
 * Arguments:
