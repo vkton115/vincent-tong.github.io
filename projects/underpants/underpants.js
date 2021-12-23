@@ -290,6 +290,8 @@ _.partition = function (array, func){
     return mainArr;
 }
 
+
+
 /** _.map
 * Arguments:
 *   1) A collection
@@ -391,7 +393,21 @@ var every = function (collection, func) {
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-
+_.some = function (collection, func){
+    if (Array.isArray(collection)){
+        for (let i = 0; i < collection.length; i++){
+            if ((func(collection[i], i, collection))){
+                return true;
+            }
+        } return false;
+    } else if (typeof collection === "object"){
+        for (var key in collection){
+            if ((func(collection[key], key, collection))){
+                return true;
+            }
+        } return false;
+    }
+}
 
 /** _.reduce
 * Arguments:
