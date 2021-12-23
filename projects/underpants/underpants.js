@@ -307,7 +307,7 @@ _.partition = function (array, func){
 */
 _.map = function (collection, func){
     //create output variable
-    outputArr = [];
+    var outputArr = [];
     //detemine if collection is an array
     if(Array.isArray(collection)){
         //iterate through array
@@ -336,6 +336,9 @@ _.map = function (collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
+_.pluck = function (array, prop){
+
+}
 
 
 /** _.every
@@ -358,7 +361,7 @@ _.map = function (collection, func){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-var every = function (array, func) {
+var every = function (collection, func) {
     // if input function is truthy
     if (func){
         //call each array value as an argument on input func, and if any of thoe
