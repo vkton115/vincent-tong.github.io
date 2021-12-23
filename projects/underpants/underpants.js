@@ -250,6 +250,14 @@ _.filter = function (array, func){
 * Examples:
 *   _.reject([1,2,3,4,5], function(e){return e%2 === 0}) -> [1,3,5]
 */
+_.reject = function (array, func){
+    var arr = [];
+    for (let i = 0; i < array.length; i ++){
+        if (!(func(array[i], i, array))){
+            arr.push(array[i]);    
+        }
+    } return arr;
+}
 
 
 /** _.partition
@@ -270,7 +278,17 @@ _.filter = function (array, func){
 *   }); -> [[2,4],[1,3,5]]
 }
 */
-
+_.partition = function (array, func){
+    var mainArr = [];
+    var truthyArr = [];
+    var falsyArr = [];
+    for (let i = 0; i < array.length; i++){
+        (func(array[i], i, array) ? truthyArr.push(array[i]) : falsyArr.push(array[i]))
+    }
+    mainArr.push(falsyArr);
+    mainArr.unshift(truthyArr);
+    return mainArr;
+}
 
 /** _.map
 * Arguments:
