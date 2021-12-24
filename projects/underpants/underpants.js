@@ -328,6 +328,7 @@ _.map = function (collection, func){
     return outputArr;
 }
 
+
 /** _.pluck
 * Arguments:
 *   1) An array of objects
@@ -339,7 +340,11 @@ _.map = function (collection, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = function (array, prop){
-
+    var arr = _.map();
+    for (let i = 0; i < array.length; i++){
+        arr.push(array[i][prop])
+    }
+    return arr;
 }
 
 
@@ -363,16 +368,22 @@ _.pluck = function (array, prop){
 *   _.every([2,4,6], function(e){return e % 2 === 0}) -> true
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
-var every = function (collection, func) {
+_.every = function (collection, func) {
     // if input function is truthy
-    if (func){
-        //call each array value as an argument on input func, and if any of thoe
-        //expressions return false, function should return false
-    } else {
-        //if any value is false, return false
+    if (Array.isArray(collection)){
+        for (let i = 0; i < collection.length; i++){
+            if (!(func(collection[i], i, collection)) || !(collection[i])){
+                return false;
+            }
+        } return true;
+    } else if (!(Array.isArray(collection))){
+        for (var key in collection){
+            if (!(func(collection[key], key, collection)) || !(collection[key])){
+                return false;
+            }
+        } return true;
     }
 }
-
 /** _.some
 * Arguments:
 *   1) A collection
@@ -400,7 +411,7 @@ _.some = function (collection, func){
                 return true;
             }
         } return false;
-    } else if (typeof collection === "object"){
+    } else if (!(Array.isArray(collection))){
         for (var key in collection){
             if ((func(collection[key], key, collection))){
                 return true;
@@ -427,7 +438,19 @@ _.some = function (collection, func){
 * Examples:
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
-
+_.reduce = function (array, func, seed){
+    var prevResult;
+    for (let i = 0; i < array.length; i++){
+        if (i === 0 && seed === undefined){
+            prevResult = array[0];
+        } else if (i === 0){
+            prevResult = func(seed, array[i], i);
+        } else if (i > 0){
+            prevResult = func(prevResult, array[i], i);
+        }
+    }
+    return prevResult;
+}
 
 /** _.extend
 * Arguments:
@@ -443,7 +466,13 @@ _.some = function (collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
-
+_.extend = function(mainObj , ...obj){
+    for (let i = 0; i < obj.length; i++){
+            Object.assign(mainObj, obj[i])
+    }
+    return mainObj;
+}
+//helpful link: https://www.baeldung.com/java-varargs
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
