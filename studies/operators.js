@@ -76,6 +76,33 @@ var y = 3;
 console.log(10 ** 3); // 1000 (reads as 10 * 10 * 10)
 
 //ASSIGNMENT OPERATORS//
+// The assignment operator uses the equal (=) symbol to assign values to variables
+var a = 5;
+console.log(a); //=> 5
+
+//Addition assignment:
+a += 2;
+console.log(a); //=> 7 (a = 5 + 2)
+
+//Subtraction assignment:
+a -= 3;
+console.log(a); // => 4 (a = 7 - 3)
+
+//Multiplication assignment:
+a *= 5;
+console.log(a); // => 20 (a = 4 * 5)
+
+//Division assignment:
+a /= 2;
+console.log(a); // => 10 (a = 20 / 2)
+
+//Remainder assignment:
+a %= 4;
+console.log(a); // =>2 (a = 10 % 4)
+
+//Exponentiation assignment:
+a **= 3;
+console.log(a); // => 8 (a = 2 * 2 * 2)
 
 //COMPARISON OPERATORS//
 
