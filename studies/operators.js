@@ -219,12 +219,12 @@ var b = 3;
 console.log(a < b); // => true (1 is less than 3)
 console.log(!(a < b)); // => false (1 being less than 3 is True, therefor return false)
 
-//UNARY OPERATORS//
+//5. UNARY OPERATORS//
 //Unary Operators are operations that have only one operand on either side of the operator.
 // We have already seen some examples above such as: plus (+), minus/negation (-), increment (++), decrement (--), logical NOT (!)
 //some other types of unary operators include:
 
-//typeOf
+//5a. typeof
 //Description: returns a string that indicates the datatype of the operand
 var a = "Hello";
 var b = 42;
@@ -234,4 +234,41 @@ console.log(typeof a);// => 'string'
 console.log(typeof b);// => 'number'
 console.log(typeof c);// => 'boolean'
 
-//TERNARY OPERATORS//
+//5b. delete
+//Description: can be used to remove a property from an object
+var object = {
+    name: "John Doe",
+    age: 30
+}
+
+delete object.age;
+
+console.log(object); // => {name: "John Doe"}
+
+// Since arrays are also considered objects, delete can removed the values at certain index. However, it will not delete the index itself.
+// It instead replaces the value deleted with an undefined value.
+var array = ["John", "Bob", "Stacy"];
+
+delete array[1];
+
+console.log(array); // => [ 'John', <1 empty item>, 'Stacy' ]
+
+//6. TERNARY OPERATORS//
+//Ternary operators are the only operators that take in 3 operands: a condition (which is followed by a ?), an expression to execute if the condition is 'truthy',
+//and an expression to execute if a condition is 'falsy'.
+
+//6a. Understanding truthy and falsy expressions
+
+// If a condition does not result in a boolean (ie: true or false), the datatype can be classified as truthy or falsy.
+// apart from the boolean false, the following are other examples of falsy values: 0, -0, "", null, undefined, NaN
+
+//all other values are considered truthy
+
+//6b. Using Ternary Operators
+var person = {
+    name: "Vincent",
+    age: 21
+}
+
+var drinkingAge = (person.age >= 21 ? "can drink" : "not old enough"); // returns "can drink" if the person's age is at least 21. returns "not old enough" otherwise
+console.log(drinkingAge); // => can drink
