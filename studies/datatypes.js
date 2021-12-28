@@ -81,3 +81,14 @@ function test(num1, num2){
 test(3, 2); //=> 1. (in the above function, it first tests if 3 is less than 2, which is false. therefore it moves to the next conditional to test if 3 is greater than 2, which is true)
 
 //2. COMPLEX DATA TYPES
+//2a. Arrays
+// Arrays are used to list data types. They are declared by using brackets like so:
+var array = [];
+
+//They can hold a variety of different data types:
+var array = ["strings", 42, true, undefined, null, NaN];
+
+//In order to access specific elements within the array, you would use an index. Special note: arrays have a zero index, meaning the 1st item of the list starts at the 0 index
+console.log(array[0])//=> "strings"
+console.log(array[1])//=> 42
+console.log(array[2])//=> true
