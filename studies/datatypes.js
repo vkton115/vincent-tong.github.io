@@ -188,3 +188,7 @@ console.log(carObject.name);//=> "Mazda3"
 
 //bracket notation
 console.log(carObject["year"]);//=> 2014 (the key should be in quotes to denote it as a string)
+
+//properties of an object can be deleted in a similar sense akin to arrays
+delete carObject.name;
+console.log(carObject);//=>{ color: 'Silver', year: 2014 }
