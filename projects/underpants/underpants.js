@@ -372,13 +372,21 @@ _.every = function (collection, func) {
     // if input function is truthy
     if (Array.isArray(collection)){
         for (let i = 0; i < collection.length; i++){
-            if (!(func(collection[i], i, collection)) || !(collection[i])){
+            if (typeof func === "undefined"){
+                if (!(collection[i])){
+                    return false;
+                }
+            } else if (!(func(collection[i], i, collection))){
                 return false;
             }
         } return true;
     } else if (!(Array.isArray(collection))){
         for (var key in collection){
-            if (!(func(collection[key], key, collection)) || !(collection[key])){
+            if (typeof func === "undefined"){
+                if (!(collection[key])){
+                    return false;
+                }
+            } else if (!(func(collection[key], key, collection))){
                 return false;
             }
         } return true;
@@ -407,13 +415,21 @@ _.every = function (collection, func) {
 _.some = function (collection, func){
     if (Array.isArray(collection)){
         for (let i = 0; i < collection.length; i++){
-            if ((func(collection[i], i, collection))){
+            if (typeof func === "undefined"){
+                if ((collection[i])){
+                    return true;
+                }
+            } else if ((func(collection[i], i, collection))){
                 return true;
             }
         } return false;
     } else if (!(Array.isArray(collection))){
         for (var key in collection){
-            if ((func(collection[key], key, collection))){
+            if (typeof func === "undefined"){
+                if ((collection[key])){
+                    return true;
+                }
+            } else if ((func(collection[key], key, collection))){
                 return true;
             }
         } return false;
