@@ -56,11 +56,13 @@ let oldestCustomer = function (array) {
 var youngestCustomer;
 
 var averageBalance = function (array){
-    var total = 0;
-    var balance = _.reduce(array, function(total, customer, index){
-        total += customer.balances
-    },);
-    return total / array.length;
+  var totalBalance = 0;
+  var balance = _.reduce(array, function(total, customer, index){
+    totalBalance += customer.balance;
+    total += 1;
+    return total;
+  },0);
+  return totalBalance/balance;
 }
 
 var firstLetterCount;
