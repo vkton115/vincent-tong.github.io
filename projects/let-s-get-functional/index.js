@@ -42,13 +42,26 @@ var femaleCount = function(array) {
     return numFemales;
 };
 
-var oldestCustomer = function (array) {
-
-};
+let oldestCustomer = function (array) {
+    const oldestObj = _.reduce(array, function (previous, current) {
+      if (previous.age > current.age) {
+        return previous;
+      } else {
+        return current;
+      }
+    });
+    return oldestObj.name;
+  };
 
 var youngestCustomer;
 
-var averageBalance;
+var averageBalance = function (array){
+    var total = 0;
+    var balance = _.reduce(array, function(total, customer, index){
+        total += customer.balances
+    },);
+    return total / array.length;
+}
 
 var firstLetterCount;
 
