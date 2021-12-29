@@ -312,11 +312,17 @@ _.map = function (collection, func){
     var outputArr = [];
     //detemine if collection is an array
     if(Array.isArray(collection)){
+        if (typeof func === "string"){
         //iterate through array
         for (var i = 0; i < collection.length; i++){
             //call the input function, passing in the current array value, current index, and collection
-            var result = func(collection[i], i, collection);
-            outputArr.push(result);
+            outputArr.push(collection[i][func]);
+        }
+    } else {
+            for (var i = 0; i < collection.length; i++){
+                var result = func(collection[i], i, collection);
+                outputArr.push(result);
+            }
         }
     } else {
         for (var key in collection){
@@ -324,9 +330,11 @@ _.map = function (collection, func){
             outputArr.push(result);
         }
     }
+
     //return output Array
     return outputArr;
 }
+
 
 
 /** _.pluck
@@ -339,12 +347,9 @@ _.map = function (collection, func){
 * Examples:
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
-_.pluck = function (array, prop){
-    var arr = _.map();
-    for (let i = 0; i < array.length; i++){
-        arr.push(array[i][prop])
-    }
-    return arr;
+_.pluck = function(array, prop){
+    return _.map(array, prop);
+
 }
 
 

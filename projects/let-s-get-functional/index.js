@@ -3,7 +3,7 @@
 'use strict';
 
 var customers = require('./data/customers.json');
-var _ = require(/* Replace this with the name of your lodown! */);
+var _ = require('underbar');
 
 /**
  * 1. Import your lodown module using the require() method,
@@ -16,18 +16,35 @@ var _ = require(/* Replace this with the name of your lodown! */);
  *
  * 4. To test your work, run the following command in your terminal:
  *
- *    npm start --prefix ./<YOUR_GITHUB_FOLDER/projects/let-s-get-functional
+ *    npm start --prefix ./vincent-tong.github.io/projects/let-s-get-functional
  *
  *    IMPORTANT: Make sure you replace <YOUR_GITHUB_FOLDER with your actual github folder name that is in your workspace.
  */
 
 var maleCount = function(array) {
-
+    //use filter function to return an array of only the male customers
+    var males = _.filter(array, function(customer){
+            return customer.gender === "male";
+    });
+    return males.length;
 };
 
-var femaleCount;
+var femaleCount = function(array) {
+    //use reduce function to return the number of female customers
+    var numFemales = _.reduce(array, function(females, customer, index){
+        // determine if the current customer has a gender of female
+        if (customer.gender === "female"){
+            // if true, add 1 to the females accumulator value
+            females += 1; // females = 0 + 1
+        }
+        return females;
+    }, 0); // return the number of female customers
+    return numFemales;
+};
 
-var oldestCustomer;
+var oldestCustomer = function (array) {
+
+};
 
 var youngestCustomer;
 
