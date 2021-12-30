@@ -42,8 +42,8 @@ var femaleCount = function(array) {
     return numFemales;
 };
 
-let oldestCustomer = function (array) {
-    const oldestObj = _.reduce(array, function (previous, current) {
+var oldestCustomer = function (array) {
+    let oldestObj = _.reduce(array, function (previous, current) {
       if (previous.age > current.age) {
         return previous;
       } else {
@@ -53,27 +53,89 @@ let oldestCustomer = function (array) {
     return oldestObj.name;
   };
 
-var youngestCustomer;
+var youngestCustomer = function (array) {
+  let youngestObj = _.reduce(array, function (previous, current) {
+    if (previous.age < current.age) {
+      return previous;
+    } else {
+      return current;
+    }
+  });
+  return youngestObj.name;
+};
 
 var averageBalance = function (array){
-  var totalBalance = 0;
-  var balance = _.reduce(array, function(accumulator, customer){
-    totalBalance = totalBalance + customer.balance;
-    accumulator += 1;
-    return totalBalance;
-  },0);
-  return balance/accumulator;
 }
+//   var totalBalance = 0;
+//   var balance = _.reduce(array, function(accumulator, customer){
+//     totalBalance = totalBalance + customer.balance;
+//     accumulator += 1;
+//     return totalBalance;
+//   },0);
+//   return balance/accumulator;
+// }
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter){
+  var letterCount = _.reduce(array, function(names, customer, index){
+    if (customer.name[0] === letter.toUpperCase()){
+      names += 1;
+    }
+    return names;
+  }, 0);
+  return letterCount;
+};
 
-var friendFirstLetterCount;
 
-var friendsCount;
+
+var friendFirstLetterCount = function(array, customer, letter){
+  
+}
+//   var friendCount = _.reduce(array, function(names, customers, index){
+//     if (customers.name === customer){
+//       for (var friends in customer){
+//         if (friends.name[0] === letter.toUpperCase()){
+//           names += 1;
+//         }
+//         return names;
+//       }
+//     }
+//   }, 0);
+//   return friendCount;
+// };
+
+var friendsCount = function (array, name){
+}
+//   var friends = _.filter(array, function(customer){
+//     for (var friends in customer){
+//       if (friends === name){
+//         return true;
+//       }
+//     }
+// });
+// return friends;
+// };
 
 var topThreeTags;
 
-var genderCount;
+var genderCount = function (array){
+}
+//   let genderCount = _.reduce(array, function (males, females, nonbinary, customer, index){
+//     if (customer.gender === "male"){
+//       males += 1;
+//     } else if (customer.gender === "female"){
+//       females += 1;
+//     } else if (customer.gender === "non-binary"){
+//       nonbinary += 1;
+//     }
+//     return {
+//       male: males,
+//       female: females,
+//       "non-binary": nonbinary,
+//     }
+//   },0);
+//   return genderCount;
+// };
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
