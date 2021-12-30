@@ -56,9 +56,6 @@ weather = "sunny";
 console.log(weather); // => prints "sunny"
 
 //let can not be redeclared
-
-let weather = "cloudy";
-console.log(weather); // => prints "cloudy"
 let weather = "sunny";
 console.log(weather); // => Error: "weather" has already been declared
 
