@@ -65,7 +65,13 @@ var youngestCustomer = function (array) {
 };
 
 var averageBalance = function (array){
+
 }
+//   var balance = _.reduce(array, function(accumulator, customer){
+//     var money = customer.balance.replace(/[$,]/g, "")
+//     money.number();
+//   }, 0);
+// }
 //   var totalBalance = 0;
 //   var balance = _.reduce(array, function(accumulator, customer){
 //     totalBalance = totalBalance + customer.balance;
@@ -88,35 +94,35 @@ var firstLetterCount = function(array, letter){
 
 
 var friendFirstLetterCount = function(array, Customer, letter){
+  var friendsCount = [];
   var count = _.filter(array, function(customer){
-    if (customer.name === Customer){
-      for (let i = 0; i < customer.friends.length; i++){
-        if (customer.friends[i].name[0] === letter.toUpperCase()){
-          return true;
-        }
-      }
+    return customer.name === Customer;
     }
-  })
-  return count.length;
+  );
+  for (let i = 0; i < count[0].friends.length; i++){
+    if (count[0].friends[i].name[0].toUpperCase() === letter.toUpperCase()){
+      friendsCount.push(count[0].friends[i])
+    }
+  }
+  return friendsCount.length;
 }
-//   var friendCount = _.reduce(array, function(names, customers, index){
-//     if (customers.name === customer){
-//       for (var friends in customer){
-//         if (friends.name[0] === letter.toUpperCase()){
-//           names += 1;
-//         }
-//         return names;
-//       }
-//     }
-//   }, 0);
-//   return friendCount;
-// };
 
 var friendsCount = function (array, name){
+  var customers = _.filter(array, function(customer){
+    for (let i = 0; i < customer.friends.length; i++){
+      if (customer.friends[i].name === name){
+        return true;
+      }
+    }
+  });
+  return customers.map(function(customer){
+    return customer.name;
+  });
 }
+
 //   var friends = _.filter(array, function(customer){
 //     for (var friends in customer){
-//       if (friends === name){
+//       if (friends[name] === name){
 //         return true;
 //       }
 //     }
@@ -124,26 +130,51 @@ var friendsCount = function (array, name){
 // return friends;
 // };
 
-var topThreeTags;
+
+var topThreeTags = function(array){
+  var tagObj = {};
+  for (let i = 0; i < array.length; i++){
+    var tags = array[i].tags;
+    for (let i = 0; i < tags.length; i++){
+      if (tagObj[tags[i]]) {
+        tagObj[tags[i]] += 1;
+      } else {
+        tagObj[tags[i]] = 1;
+      }
+    }
+  }
+  var arr = Object.entries(tagObj);
+  arr.sort()
+
+  // var tagArr = _.map(tagObj, function(value, key){
+  //   return [key, value];
+  })
+
+  // for (let i = 0; i < tagObj[tags].length; i++){
+  //   tagArr.push(tagObj[tags[i]]);
+
+  //iterate through array and create an array of arrays
+  //sort
+  return tagObj;
+};
+
+
+//   var tags = array.map(function(customer){
+//     return customer.tags;
+//   })
+//   return tags;
 
 var genderCount = function (array){
-}
-//   let genderCount = _.reduce(array, function (males, females, nonbinary, customer, index){
-//     if (customer.gender === "male"){
-//       males += 1;
-//     } else if (customer.gender === "female"){
-//       females += 1;
-//     } else if (customer.gender === "non-binary"){
-//       nonbinary += 1;
-//     }
-//     return {
-//       male: males,
-//       female: females,
-//       "non-binary": nonbinary,
-//     }
-//   },0);
-//   return genderCount;
-// };
+  let genderObj = _.reduce(array, function (countObj, customer, index){
+    if (countObj[customer.gender]){
+      countObj[customer.gender] += 1;
+    } else {
+      countObj[customer.gender] = 1;
+    }
+    return countObj;
+  },{});
+  return genderObj;
+};
 
 
 //////////////////////////////////////////////////////////////////////

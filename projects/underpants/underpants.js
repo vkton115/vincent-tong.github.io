@@ -312,25 +312,23 @@ _.map = function (collection, func){
     var outputArr = [];
     //detemine if collection is an array
     if(Array.isArray(collection)){
-        if (typeof func === "string"){
+        if (typeof func === "string")
         //iterate through array
         for (var i = 0; i < collection.length; i++){
             //call the input function, passing in the current array value, current index, and collection
             outputArr.push(collection[i][func]);
-        }
-    } else {
-            for (var i = 0; i < collection.length; i++){
-                var result = func(collection[i], i, collection);
-                outputArr.push(result);
-            }
-        }
-    } else {
-        for (var key in collection){
-            var result = func(collection[key], key, collection);
+        } else {
+        for (var i = 0; i < collection.length; i++){
+            var result = func(collection[i], i, collection);
             outputArr.push(result);
         }
     }
-
+} else if (!(Array.isArray(collection))){
+    for (var key in collection){
+        var result = func(collection[key], key, collection);
+        outputArr.push(result);
+    }
+}
     //return output Array
     return outputArr;
 }
@@ -348,7 +346,9 @@ _.map = function (collection, func){
 *   _.pluck([{a: "one"}, {a: "two"}], "a") -> ["one", "two"]
 */
 _.pluck = function(array, prop){
-    return _.map(array, prop);
+    return _.map(array, function(current){
+        return current[prop]
+    });
 
 }
 
