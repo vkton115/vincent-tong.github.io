@@ -65,7 +65,18 @@ var youngestCustomer = function (array) {
 };
 
 var averageBalance = function (array){
+  var sum = 0;
+  var number = array.length;
 
+  for (let i = 0; i < array.length; i++){
+    var current = array[i].balance;
+    var result = current.replace(/[$,]/g, "");
+    var numResult = parseFloat(result);
+    sum += numResult;
+  }
+  var avg = sum / number;
+
+  return avg;
 }
 //   var balance = _.reduce(array, function(accumulator, customer){
 //     var money = customer.balance.replace(/[$,]/g, "")
@@ -144,18 +155,17 @@ var topThreeTags = function(array){
     }
   }
   var arr = Object.entries(tagObj);
-  arr.sort()
 
   // var tagArr = _.map(tagObj, function(value, key){
   //   return [key, value];
-  })
+  // })
 
   // for (let i = 0; i < tagObj[tags].length; i++){
   //   tagArr.push(tagObj[tags[i]]);
 
   //iterate through array and create an array of arrays
   //sort
-  return tagObj;
+  return arr;
 };
 
 
