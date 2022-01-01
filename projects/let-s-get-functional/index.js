@@ -156,17 +156,28 @@ var topThreeTags = function(array){
   }
   var arr = Object.entries(tagObj);
 
-  // var tagArr = _.map(tagObj, function(value, key){
-  //   return [key, value];
-  // })
+    function compare(a , b){
+    b - a;
+  }
+for (let i = 0; i < arr.length -1; i ++){
+  arr.sort(compare(arr[i][1], arr[i + 1][1]));
+}
+return arr;
 
-  // for (let i = 0; i < tagObj[tags].length; i++){
-  //   tagArr.push(tagObj[tags[i]]);
 
-  //iterate through array and create an array of arrays
-  //sort
-  return arr;
+  // arr.sort((a,b) => arr[1][1] - arr[0][1]);
+//   function compare(a, b){
+//   for (let i = 0; i < arr.length; i++){
+//     return arr[i][1] - arr[i+1][1];
+//   }
+// }
+
 };
+
+// for (let i = 0; i < arr.length; i++){
+//   arr.sort((a,b) => arr[i][1] - arr[i+1][1]);
+// }
+
 
 
 //   var tags = array.map(function(customer){
