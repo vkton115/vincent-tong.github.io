@@ -311,24 +311,18 @@ _.map = function (collection, func){
     //create output variable
     var outputArr = [];
     //detemine if collection is an array
-    if(Array.isArray(collection)){
-        if (typeof func === "string")
+    // if (typeof func === "string")
+    if (Array.isArray(collection)){
+        for (var i = 0; i < collection.length; i++){
         //iterate through array
-        for (var i = 0; i < collection.length; i++){
             //call the input function, passing in the current array value, current index, and collection
-            outputArr.push(collection[i][func]);
-        } else {
-        for (var i = 0; i < collection.length; i++){
-            var result = func(collection[i], i, collection);
-            outputArr.push(result);
+            outputArr.push(func(collection[i], i, collection));
+        }
+    }else {
+        for (var key in collection){
+            outputArr.push(func(collection[key], key, collection));
         }
     }
-} else if (!(Array.isArray(collection))){
-    for (var key in collection){
-        var result = func(collection[key], key, collection);
-        outputArr.push(result);
-    }
-}
     //return output Array
     return outputArr;
 }
