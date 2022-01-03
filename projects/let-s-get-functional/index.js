@@ -64,33 +64,17 @@ var youngestCustomer = function (array) {
   return youngestObj.name;
 };
 
-var averageBalance = function (array){ //try to utilize .reduce
-  var sum = 0;
-  var number = array.length;
-
-  for (let i = 0; i < array.length; i++){
-    var current = array[i].balance;
-    var result = current.replace(/[$,]/g, "");
-    var numResult = parseFloat(result);
-    sum += numResult;
-  }
-  var avg = sum / number;
-
-  return avg;
+var averageBalance = function (array){
+  var balanceTotal = _.reduce(array, function(accumulator, customer){
+    var currentBalance = customer.balance;
+    var balanceString = currentBalance.replace(/[$,]/g, "");
+    var stringToNumber = parseFloat(balanceString);
+    accumulator += stringToNumber;
+    return accumulator;
+  }, 0)
+  return balanceTotal / array.length;
 }
-//   var balance = _.reduce(array, function(accumulator, customer){
-//     var money = customer.balance.replace(/[$,]/g, "")
-//     money.number();
-//   }, 0);
-// }
-//   var totalBalance = 0;
-//   var balance = _.reduce(array, function(accumulator, customer){
-//     totalBalance = totalBalance + customer.balance;
-//     accumulator += 1;
-//     return totalBalance;
-//   },0);
-//   return balance/accumulator;
-// }
+
 
 var firstLetterCount = function(array, letter){
   var letterCount = _.reduce(array, function(names, customer, index){
@@ -131,17 +115,6 @@ var friendsCount = function (array, name){
   });
 }
 
-//   var friends = _.filter(array, function(customer){
-//     for (var friends in customer){
-//       if (friends[name] === name){
-//         return true;
-//       }
-//     }
-// });
-// return friends;
-// };
-
-
 
 var topThreeTags = function(array){
   var tagObj = {};
@@ -167,26 +140,6 @@ newArr.push(sorted[1][0]);
 newArr.push(sorted[2][0]);
 return newArr;
 }
-
-
-  // arr.sort((a,b) => arr[1][1] - arr[0][1]);
-//   function compare(a, b){
-//   for (let i = 0; i < arr.length; i++){
-//     return arr[i][1] - arr[i+1][1];
-//   }
-// }
-
-
-// for (let i = 0; i < arr.length; i++){
-//   arr.sort((a,b) => arr[i][1] - arr[i+1][1]);
-// }
-
-
-
-//   var tags = array.map(function(customer){
-//     return customer.tags;
-//   })
-//   return tags;
 
 var genderCount = function (array){
   let genderObj = _.reduce(array, function (countObj, customer, index){
