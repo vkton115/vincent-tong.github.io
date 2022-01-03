@@ -64,7 +64,7 @@ var youngestCustomer = function (array) {
   return youngestObj.name;
 };
 
-var averageBalance = function (array){
+var averageBalance = function (array){ //try to utilize .reduce
   var sum = 0;
   var number = array.length;
 
@@ -142,8 +142,10 @@ var friendsCount = function (array, name){
 // };
 
 
+
 var topThreeTags = function(array){
   var tagObj = {};
+  var newArr = [];
   for (let i = 0; i < array.length; i++){
     var tags = array[i].tags;
     for (let i = 0; i < tags.length; i++){
@@ -156,13 +158,15 @@ var topThreeTags = function(array){
   }
   var arr = Object.entries(tagObj);
 
-    function compare(a , b){
-    b - a;
-  }
-for (let i = 0; i < arr.length -1; i ++){
-  arr.sort(compare(arr[i][1], arr[i + 1][1]));
+
+  var sorted = arr.sort(function(a, b){
+    return b[1] - a[1];
+  });
+newArr.push(sorted[0][0]);
+newArr.push(sorted[1][0]);
+newArr.push(sorted[2][0]);
+return newArr;
 }
-return arr;
 
 
   // arr.sort((a,b) => arr[1][1] - arr[0][1]);
@@ -172,7 +176,6 @@ return arr;
 //   }
 // }
 
-};
 
 // for (let i = 0; i < arr.length; i++){
 //   arr.sort((a,b) => arr[i][1] - arr[i+1][1]);
