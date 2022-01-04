@@ -69,7 +69,7 @@ var sumBelow = function(n) {
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
 var range = function(x, y) {
-};
+}
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -77,22 +77,51 @@ var range = function(x, y) {
 // Example:  exponent(4,3);  // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
-};
+  //base
+  if (exp === 0){
+    return 1;
+  } else if (exp === 1){
+    return base;
+  }
+
+//   //recursion
+//   if (exp < 0){
+//     return exponent(1/base, -1*exp);
+//   } else if (exp > 1){
+//     return base**exp;
+//   }
+// }
+  if (exp < 0){
+    return 1/base**(-1 * exp);
+  } else if (exp > 1){
+    return base**exp;
+  }
+}
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  //base
+
+  //recursion
 };
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
+  //base
+  if (string.length === 1){
+    return string[0];
+  }
+
+  //recursion
+  return string.slice(string.length-1) + reverse(string.substring(0, string.length-1));
 };
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
-};
+}
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -100,12 +129,21 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+  //base
+
+  //recursion
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator  or
 // JavaScript's Math object.
 // ATTENTION DO NOT LEAVE COMMENTS IN THIS FUNCTION. The test is looking for any ('/').
 var multiply = function(x, y) {
+
+  if (y === 1){
+    return 0;
+  }
+
+    return x + multiply(x, y-1);
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
