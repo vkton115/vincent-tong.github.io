@@ -8,7 +8,7 @@
 5) npm install -g opspark
 6) os install
 7) enter username : vkton115
-8) enter personal access token: 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
+8) enter personal access token: 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
 
 9) (optional) use "os test" to test if your code is passing tests. use ctrl c after to get back to your terminal
 
