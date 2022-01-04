@@ -174,8 +174,9 @@ console.log(newArray);//=> [ 'B', 'E' ]
 //While arrays are more like lists and can contain a multitude of at time, seemingly random values, objects have properties that can be seen as characteristics of itself.
 
 //objects are declared by using curly braces {}
-var carObject = {
+var obj = {};
 //within the braces, they have keys that are followed by their respective values. These are key-value pairs, or properties of the object.
+var carObject = {
     name: "Mazda3",
     color: "Silver",
     year: 2014
@@ -192,3 +193,59 @@ console.log(carObject["year"]);//=> 2014 (the key should be in quotes to denote 
 //properties of an object can be deleted in a similar sense akin to arrays
 delete carObject.name;
 console.log(carObject);//=>{ color: 'Silver', year: 2014 }
+
+//3 FUNCTIONS
+//functions are a set of statements used to perform certain tasks in our code
+
+//functions are declared by using the function keyword followed by: the name of the function, its parameters (enclosed in parenthesis), and the statements
+// that define the function enclosed in curly braces.
+
+function add(num1, num2){
+    return num1 + num2;
+}
+
+//the above function is declared with the name 'add'. it takes in two parameters: num1 and num2 and returns the sum of the two numbers.
+//next, to use this function we have to initiate a function call by using the function name and adding in our own parameters.
+
+console.log(add(1, 5)); //=> 6
+
+//you can also set default parameters for the instances in which you call the function without having all the parameters filled
+
+function subtract(num1, num2 = 2){
+    return num1 - num2;
+}
+
+console.log(subtract(5));//=> 3 (returns 5 - 2 since the second number parameter was not provided)
+
+//parameters of a function can be accessed similarly to arrays using bracket notation
+function parameterTest(string, num, bool){
+    console.log(arguments[0]);
+    console.log(arguments[1]);
+    console.log(arguments[2]);
+}
+
+console.log(parameterTest("Hello", 42, true)); //=> "Hello" 42 true
+
+//if you do not know how many parameters your function will take in, you can use a rest parameter
+//the syntax for a rest parameter is three dots followed by the name of the parameter
+function multiplier(num1, ...nums){
+
+//this essentially creates an array of parameters that you can access with bracket notation throughout your function
+    var numsArr = [];
+    numsArr.push(num1 * nums[0]);
+    numsArr.push(num1 * nums[1]);
+    numsArr.push(num1 * nums[2]);
+    return numsArr;
+  }
+  
+  console.log(multiplier(5, 2, 1, 3)); //=> [ 10, 5, 15 ]
+
+//function expressions can also be declared anonymously without a name
+var square = function(length, width){
+    return length * width;
+}
+
+//they can also be declared with a name
+var cube = function cubic(length, width, height){
+    return length * width * height
+}
