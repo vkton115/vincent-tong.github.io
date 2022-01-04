@@ -114,3 +114,10 @@ var numString = "20";
 var num = 21;
 
 console.log(numString + num); //=> "2021"
+
+//Comparison
+//uppercase values and their lowercase counterparts have different values in java, there for the below strings are not equal when compared.
+var str1 = "hello";
+var str2 = "Hello";
+
+console.log(str1 == str2); //false
