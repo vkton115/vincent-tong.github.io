@@ -148,10 +148,17 @@ var modulo = function(x, y) {
 var multiply = function(x, y) {
 
   if (y === 1){
+    return x;
+  } else if (x === 1){
+    return y;
+  } else if (x === 0 || y === 0){
     return 0;
   }
-
+  if (y > 1){
     return x + multiply(x, y-1);
+  } else if(y < 0){
+    return -x + multiply(x, y+1);
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator  or
@@ -173,15 +180,40 @@ var gcd = function(x, y) {
 // compareStr('', '') // true
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
-};
+  //base
+  if (str1.length === 0 && str2.length === 0){
+    return true;
+  } else if(str1.length === 0 && str2.length !== 0 || str1.length !== 0 && str2.length === 0){
+    return false;
+  }
+
+  //recursion
+  if (str1[0] === str2[0]){
+  return compareStr(str1.slice(1), str2.slice(1));
+  }
+}
 
 // 16. Write a function that accepts a string and creates an array where each letter
 // occupies an index of the array.
-var createArray = function(str){
+var createArray = function(str, arr = []){
+  //base
+  if (str.length === 0){
+    return arr;
+  }
+  //recursion
+  arr.push(str[0]);
+  return createArray(str.slice(1), arr);
 };
 
 // 17. Reverse the order of an array
-var reverseArr = function (array) {
+var reverseArr = function (array, arr = []) {
+  //base
+  if (array.length === 0){
+    return arr.reverse(arr);
+  }
+  //recursion
+  arr.push(array.reverse(array)[array.length -1]);
+  return reverseArr(array.reverse(array).slice(1), arr);
 };
 
 // 18. Create a new array with a given value and length.
