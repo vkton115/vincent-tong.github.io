@@ -8,6 +8,7 @@
 
  //1. IF
  //If statements are used to execute a specific block of code if the statement itself is deemed to be true.
+ //if statements are declared with the keyword 'if' followed by a conditional statement.
 
  function compareEqual(x, y){
     if (x === y){
@@ -62,4 +63,39 @@
   console.log(positiveOrNegative(0));//=> "number is zero" (all if and else if statements are false and therefore runs the else code block to return "number is zero")
 
   //switch
-  //switch statements
+  //switch statements can be seen somewhat similar to if/else if/else statements in its functionality
+  //However, instead of using if/else if/else, switch statements use cases to determine what code block to run.
+
+  var weather = "sunny";
+
+  //switch statements are declared with the keyword switch followed by an expression to compare
+
+  switch (weather){
+  //the value of the expression is compared to each value of the below cases.
+      case "cloudy":
+          console.log("bring an umbrella just in case");
+  //break is an optional keyword used to *break* out of the switch block and stop the execution of more case testing
+          break;
+      case "sunny":
+  //once a match is found, the code block below will execute
+          console.log("Its a beautiful day outside"); //=> "Its a beautiful day outside"
+          break;
+      case "icy":
+          console.log("drive carefully today");
+          break;  
+  }
+
+
+//default
+// in switch statements, default can be used to execute a codeblock if none of the case values match the expression, similarly to an else statement
+
+var day = 1;
+
+switch (day){
+    case 6:
+        console.log("Yay, it's Saturday");
+    case 7:
+        console.log("Hooray, it's Sunday");
+    default:
+        console.log("I can't wait for the weekend") //=> "I can't wait for the weekend" (since no cases match the value of 4, the default case runs)
+}
