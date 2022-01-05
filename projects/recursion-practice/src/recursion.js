@@ -54,22 +54,36 @@ if (n === 1){
 // sumBelow(7); // 21
 var sumBelow = function(n) {
   //base
-  if (n === 1 || n === 0){
-    return 1;
+  if (n === 0){
+    return 0;
   }
-    //recursion
-    if (n > 0){
-      return n + sumBelow(n - 1);
-    } else if (n < 0){
-      return n + sumBelow(n + 1);
-    }
-  };
 
+  //recursion
+  if (n > 0){
+    return (n-1) + sumBelow(n-1);
+  } else if (n < 0){
+    return (n+1) + sumBelow(n+1);
+  }
+}
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
-}
+var range = function(x, y, arr = []) {
+  //base
+  if (x - y === 0 || x - y === 1 || x - y === -1){
+    return arr;
+  }
+
+  //recursion
+  if (x > y){
+    arr.push(x - 1);
+    return range(x - 1, y, arr);
+  } else if (x < y){
+    arr.push(x + 1);
+    return range(x + 1, y, arr);
+  }
+};
+console.log(range(-2, 3));
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
@@ -84,17 +98,11 @@ var exponent = function(base, exp) {
     return base;
   }
 
-//   //recursion
-//   if (exp < 0){
-//     return exponent(1/base, -1*exp);
-//   } else if (exp > 1){
-//     return base**exp;
-//   }
-// }
+  //recursion
   if (exp < 0){
-    return 1/base**(-1 * exp);
-  } else if (exp > 1){
-    return base**exp;
+    return 1/base*exponent(base, exp + 1);
+  } else if (exp > 0){
+    return base*exponent(base, exp - 1);
   }
 }
 
