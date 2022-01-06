@@ -112,9 +112,15 @@ var exponent = function(base, exp) {
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
   //base
-
+  if (n === 2 || n === 1){
+    return true;
+  } else if (n === 0){
+    return false;
+  }
   //recursion
-};
+  
+  return powerOfTwo(n/=2)
+}
 
 // 9. Write a function that accepts a string a reverses it.
 var reverse = function(string) {
@@ -128,7 +134,14 @@ var reverse = function(string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string) {
+var palindrome = function(string, str = "") {
+  //base
+  if (str.toLowerCase().replace(" ", "") === string.toLowerCase().replace(" ", "")){
+    return true;
+  }
+  //recursion
+  str += string[string.length -1];
+  return palindrome(string.slice(0, string.slice(length - 1), str))
 }
 
 // 11. Write a function that returns the remainder of x divided by y without using the
@@ -293,7 +306,17 @@ var fibonacci = function(n) {
 // nthFibo(7); // 13
 // nthFibo(3); // 2
 var nthFibo = function(n) {
-};
+  //base
+  if(n == 0){      
+  return 0;
+  } else if(n == 1){ 
+    return 1;
+  } else if (n < 0){
+    return null;
+  }
+  //recursion
+  return nthFibo(n-1) + nthFibo(n-2); 
+}
 
 // 26. Given an array of words, return a new array containing each word capitalized.
 // var words = ['i', 'am', 'learning', 'recursion'];
