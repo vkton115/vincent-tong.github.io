@@ -136,13 +136,24 @@ var reverse = function(string) {
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string, str = "") {
   //base
-  if (str.toLowerCase().replace(" ", "") === string.toLowerCase().replace(" ", "")){
-    return true;
+  if (string.length === 0){
+    if (str.toLowerCase().replace(" ", "") === string.toLowerCase().replace(" ", "")){
+      return true;
+    } else {
+      return false;
+    }
   }
-  //recursion
-  str += string[string.length -1];
-  return palindrome(string.slice(0, string.slice(length - 1), str))
+  //recursion;
+  return palindrome(string.slice(1), str)
 }
+  //base
+  // if (str.toLowerCase().replace(" ", "") === string.toLowerCase().replace(" ", "")){
+  //   return true;
+  // }
+  // //recursion
+  // str += string[string.length -1];
+  // return palindrome(string.slice(0, string.slice(length - 1), str))
+
 
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
@@ -383,7 +394,16 @@ var letterTally = function(str, obj = {}) {
 // elements should not be changed.
 // Example: compress([1, 2, 2, 3, 4, 4, 5, 5, 5]) // [1, 2, 3, 4, 5]
 // Example: compress([1, 2, 2, 3, 4, 4, 2, 5, 5, 5, 4, 4]) // [1, 2, 3, 4, 2, 5, 4]
-
+var compress = function(list, arr = []){
+  //base
+  if (list[0] !== arr[arr.length-1]){
+    arr.push(list[0]);
+  } else if (list.length === 1){
+    return arr;
+  }
+  //recursion
+  return compress(list.slice(1), arr);
+}
 
 // var compress = function(list, arr = []) {
 //   //base
@@ -439,19 +459,46 @@ var alternateSign = function(array) {
 // numToText("I have 5 dogs and 6 ponies"); // "I have five dogs and six ponies"
 var numToText = function(str, string = "") {
   //base
-  if(str.length === 0){
-    return string;
-  }
-  //recursion
-  if (typeof(str[0]) === "number"){
-    if (str[0] === 5){
-      string += "five" + numToText(str.slice(1), string);
+if (str.length === 0){
+  return string;
+}
+    switch (str[0]){
+      case "0":
+        string += "zero";
+        break;
+      case "1":
+        string += "one";
+        break;
+      case "2":
+        string += "two";
+        break;
+      case "3":
+        string += "three";
+        break;
+      case "4":
+        string += "four";
+        break;
+      case "5":
+        string += "five";
+        break;
+      case "6":
+        string += "six";
+        break;
+      case "7":
+        string += "seven";
+        break;
+      case "8":
+        string += "eight";
+        break;
+      case "9":
+        string += "nine";
+        break;
+        default: string += str[0];
     }
-  } else {
-    string += str[0];
-    return str[0] + numToText(str.slice(1), string)
-  }
-};
+
+  //recursion
+  return numToText(str.slice(1), string);
+}
 
 // *** EXTRA CREDIT ***
 
