@@ -428,19 +428,52 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array, arr = []) {
   //base
-  if (array[0] !== 0){
+  if (array.length === 0){
+    return arr;
+  } else if (array[0] !== 0 || array[0] === 0 && arr[arr.length-1] !== 0){
     arr.push(array[0]);
   }
   //recursion
-  arr.push(array[0]);
   return minimizeZeroes(array.slice(1), arr);
 }
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
 // alternateSign([2,7,8,3,1,4]) // [2,-7,8,-3,1,-4]
 // alternateSign([-2,-7,8,3,-1,4]) // [2,-7,8,-3,1,-4]
-var alternateSign = function(array) {
-};
+var alternateSign = function(array, arr = []) {
+  //base
+  if (array.length === 0){
+    return arr;
+  }
+  //recursion
+  if (arr.length === 0){
+    if (array[0] < 0){
+      arr.push(-1 * array[0]);
+      return alternateSign(array.slice(1), arr);
+    } else if (array[0] > 0){
+      arr.push(array[0]);
+      return alternateSign(array.slice(1), arr);
+    }
+  } else if (arr.length % 2 === 0){
+    if (array[0] < 0){
+      arr.push(-1 * array[0]);
+      return alternateSign(array.slice(1), arr);
+    } else if (array[0] > 0){
+      arr.push(array[0]);
+      return alternateSign(array.slice(1), arr);
+    }
+  } else if (arr.length % 2 !== 0){
+    if (array[0] < 0){
+      arr.push(array[0]);
+      return alternateSign(array.slice(1), arr);
+    } else if (array[0] > 0){
+      arr.push(-1 * array[0]);
+      return alternateSign(array.slice(1), arr);
+    }
+    arr.push(-1 *array[0]);
+    return alternateSign(array.slice(1), arr);
+  }
+}
 
 // 35. Given a string, return a string with digits converted to their word equivalent.
 // Assume all numbers are single digits (less than 10).
