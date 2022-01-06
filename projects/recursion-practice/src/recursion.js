@@ -405,24 +405,6 @@ var compress = function(list, arr = []){
   return compress(list.slice(1), arr);
 }
 
-// var compress = function(list, arr = []) {
-//   //base
-//   if (list.length === 1 && list[0] === arr[arr.length-1]){
-//     return arr;
-//   } else if (list.length === 1 && list[0] !== arr[arr.length-1]){
-//     arr.push(list[0]);
-//     return arr;
-//   }
-
-//   //recursion
-//   if (list[0] === list[1]){
-//       arr.push(list[0]);
-//       return compress(list.slice(2), arr);
-//   } else {
-//     arr.push(list[0]);
-//     return compress(list.slice(1), arr);
-//   }
-// }
 
 // 32. Augment every element in a list with a new value where each element is an array
 // itself.
@@ -445,7 +427,13 @@ var augmentElements = function(array, aug) {
 // minimizeZeroes([2,0,0,0,1,4]) // [2,0,1,4]
 // minimizeZeroes([2,0,0,0,1,0,0,4]) // [2,0,1,0,4]
 var minimizeZeroes = function(array, arr = []) {
-
+  //base
+  if (array[0] !== 0){
+    arr.push(array[0]);
+  }
+  //recursion
+  arr.push(array[0]);
+  return minimizeZeroes(array.slice(1), arr);
 }
 // 34. Alternate the numbers in an array between positive and negative regardless of
 // their original sign.  The first number in the index always needs to be positive.
