@@ -2,8 +2,28 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range() {
-
+function range(start, end, step) {
+  //output array
+  var range = [];
+  //edge case
+  if (start === end){
+    return [];
+  }
+  if (step === undefined){
+    for (let i = start; i <= end; i++){
+      range.push(i);
+    }
+    //if step is passed in
+  } else {
+    if (step < 0){
+      return [];
+    } else {
+      for (let i = start; i <= end; i += step){
+        range.push(i);
+      }
+    }
+  }
+  return range;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -18,16 +38,35 @@ function sum() {
 // reverseArray ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArray() {
-
+function reverseArray(array) {
+  //create output array
+  var reversed = [];
+  for (let i = array.length -1; i >= 0; i--){
+    reversed.push(array[i]);
+  }
+  return reversed;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
-
+function reverseArrayInPlace(array) {
+  if (array.length % 2 === 0){
+    for (let i = 0; i < array.length/2; i++){
+      var temp = array[i];
+      array[i] = array[array.length - 1 - i]
+      array[array.length - 1 - i] = temp;
+    }
+  } else {
+    //math.floor rounds it down because nothing needs to happen to the middle value
+    for (let i = 0; i < Math.floor(array.length/2); i++){
+      var temp = array[i];
+      array[i] = array[array.length -1 - i];
+      array[array.length - 1 - i] = temp;
+    }
+  }
+  return array;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,6 +74,7 @@ function reverseArrayInPlace() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function arrayToList() {
+  
 
 }
 
