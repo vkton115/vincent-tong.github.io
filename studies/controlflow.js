@@ -85,6 +85,19 @@
           break;  
   }
 
+//Without breaks, the code will search for all cases that match the expression to execute
+var soda = "Vanilla";
+
+switch(soda){
+    case "Vanilla":
+        console.log("Coke"); //=> "Coke" (the case matches the expression, and therefore executes the codeblock)
+    case "Vanilla":
+        console.log("Pepsi");// => "Pepsi"  (the case also matches the expression, and therefore executes the codeblock)
+        break;
+    case "Vanilla":
+        console.log("Dr.Pepper");//=> (the case matches the expression but because of the previous break, it will not execute the codeblock)
+}
+
 
 //default
 // in switch statements, default can be used to execute a codeblock if none of the case values match the expression, similarly to an else statement
