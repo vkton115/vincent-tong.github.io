@@ -134,25 +134,20 @@ var reverse = function(string) {
 };
 
 // 10. Write a function that determines if a string is a palindrome.
-var palindrome = function(string, str = "") {
-  //base
-  if (string.length === 0){
-    if (str.toLowerCase().replace(" ", "") === string.toLowerCase().replace(" ", "")){
-      return true;
-    } else {
-      return false;
-    }
+var palindrome = function(string, start = 0, end = string.length - 1){
+  if(start === end || (end - start === 1)){
+    return true;
   }
-  //recursion;
-  return palindrome(string.slice(1), str)
+  if (string.toLowerCase()[start] === " " && string.toLowerCase()[end] !== " "){
+    return palindrome(string, start += 1, end)
+  } else if (string.toLowerCase[end] === " " && string.toLowerCase()[start] !== " "){
+    return palindrome(string, start, end -= 1)
+  } else if (string.toLowerCase()[start] === string.toLowerCase()[end]){
+    return palindrome(string, start += 1, end -= 1);
+  }
+  return false;
 }
-  //base
-  // if (str.toLowerCase().replace(" ", "") === string.toLowerCase().replace(" ", "")){
-  //   return true;
-  // }
-  // //recursion
-  // str += string[string.length -1];
-  // return palindrome(string.slice(0, string.slice(length - 1), str))
+
 
 
 // 11. Write a function that returns the remainder of x divided by y without using the
