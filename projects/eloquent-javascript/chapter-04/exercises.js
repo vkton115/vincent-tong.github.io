@@ -128,8 +128,27 @@ function nth(list, n) {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(val1, val2) {
+  //strictly compare to see if they are the same
+  if (val1 === val2) return true;
+  //test if either value is null or not an object
+  if (val1 == null || typeof val1 != "object" ||
+      val2 == null || typeof val2 != "object")
+    return false;
+  //declaring counters to count the amount of properties in each value
+  var val1prop = 0, val2prop = 0;
+  for (var prop in val1)
+    val1prop += 1;
 
+  for (var prop in val2) {
+    val2prop += 1;
+
+    //First condition: if a property val2 is 'falsy' or does not exist in val1, return false.
+    //Second Condition: recursively tests if the properties of val1 aren't equal to val2.
+    if (!(prop in val1) || !deepEqual(val1[prop], val2[prop]))
+      return false;
+  }
+  return val1prop == val2prop;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
