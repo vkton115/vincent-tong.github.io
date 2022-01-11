@@ -150,6 +150,7 @@ var palindrome = function(string, start = 0, end = string.length - 1){
 
 
 
+
 // 11. Write a function that returns the remainder of x divided by y without using the
 // modulo (%) operator.
 // modulo(5,2) // 1
@@ -228,12 +229,13 @@ var createArray = function(str, arr = []){
 var reverseArr = function (array, arr = []) {
   //base
   if (array.length === 0){
-    return arr.reverse(arr);
+    return arr;
   }
+
   //recursion
-  arr.push(array.reverse(array)[array.length -1]);
-  return reverseArr(array.reverse(array).slice(1), arr);
-};
+  arr.push(array[array.length -1]);
+  return reverseArr(array.slice(0, array.length -1), arr);
+}
 
 // 18. Create a new array with a given value and length.
 // buildList(0,5) // [0,0,0,0,0]
