@@ -249,3 +249,16 @@ var square = function(length, width){
 var cube = function cubic(length, width, height){
     return length * width * height
 }
+
+//4 UNDEFINED
+// the 'undefined' datatype refers to a variable that has not been given a value.
+var x = "7";
+var y;
+
+console.log(x); //=> "7"
+console.log(y);//=> "undefined"
+
+//you can use typeof to use undefined variables as conditional statements
+if (typeof y === "undefined"){
+    console.log("y is undefined") //=> "y is undefined"
+}
