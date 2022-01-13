@@ -262,3 +262,46 @@ console.log(y);//=> "undefined"
 if (typeof y === "undefined"){
     console.log("y is undefined") //=> "y is undefined"
 }
+
+//5 NULL
+// the 'null' is similar to undefined in that it is the absense of a given value. The main difference being that we use null to intentionally give no value to an object.
+
+//when comparing null and undefined non-strictly, it will return true
+console.log(null == undefined);//=> true
+
+//however, this is not true for a strictly comparison
+console.log(null === undefined);//=> false
+
+//the following example shows a situation in which we would want to intentionally have the absense of a value
+
+function area(width, length){
+    if (width > 0 && length > 0){
+        return width * length;
+    } else {
+        return null;
+    }
+}
+console.log(area(3, 4)); //=> 12 (both values are above 0 and therefore will calculate the area)
+console.log(area(0, 4));//=>null (the width parameter is not greater than 0. Since you cannot calculate area with no width, we return null)
+console.log(area(2, 0));//=> null (similar to the above except with the length parameter);
+
+
+//6 NaN
+
+//NaN, or 'Not-A-Number', is a variable in the global scope. the value of NaN cannot typically be overwritten or reassigned.
+
+//There are five situations in which an operation will return NaN
+
+//6a. Parsing
+// parsing can be used to convert a string of a number into an actual number datatype like so:
+var num = "10";
+console.log(num + 20); //=> "1020" (returns a string of '1020')
+
+console.log(parseInt(num) + 20); // => 30 (turns the string '10' into the actual number 10 and can therefore be added to 20)
+
+//however, if the ParseInt function takes in a parameter that cannot be converted to a number, it will return NaN.
+var fakeNum = "ten";
+console.log(parseInt(fakeNum)); //=> NaN
+
+//6b. Math operation in which the result is not a real number
+console.log(Math.sqrt(-1))//=> NaN (the square root of -1 is, in mathematical terms, an imaginary number)
