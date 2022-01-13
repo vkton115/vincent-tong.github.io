@@ -305,3 +305,17 @@ console.log(parseInt(fakeNum)); //=> NaN
 
 //6b. Math operation in which the result is not a real number
 console.log(Math.sqrt(-1))//=> NaN (the square root of -1 is, in mathematical terms, an imaginary number)
+
+//6c. If NaN itself is being used in a mathematical operation
+console.log(5 + NaN);//=> NaN
+
+//6d. A mathematical operation involing a string, with the exception of the "+" operator
+console.log("Hello" + 7);//=> "Hello7"
+console.log("Hello" / 7);//=> NaN
+
+//6e. an operation involving two values that result in an indeterminate form
+console.log(null + undefined);//=> NaN
+console.log("Hello" / undefined);//=> NaN
+console.log(Infinity * 0); //=> NaN
+
+//7 INFINITY
