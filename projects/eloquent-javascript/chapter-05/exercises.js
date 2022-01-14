@@ -2,6 +2,8 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
+// const { characterScript } = require("./helpers");
+
 function flatten(array) {
   return array.reduce(function(accumulator, arrays){
     return accumulator.concat(arrays);;
@@ -36,9 +38,26 @@ function every(array, test) {
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(str) {
+  const arr = countBy(str, function(char){
+    //get unicode value for the current character
+    const unicode = char.charCodeAt();
+    //find the script from the unicode character
+    const script = characterScript(unicode);
+    //returning the name of script direction or null
+    if (script !== null){
+      return script.direction;
+    } else {
+      return script;
+    }
+  });
+  //find the highest count by sorting
+  arr.sort(function (a, b){
+    return b.count - a.count;
+  })
+  return arr[0].name
 }
+
 
 // /////////////////////////////////////////////////////////////////////////////
 //  //////////////////////////////////////////////////////
