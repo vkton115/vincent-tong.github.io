@@ -39,3 +39,54 @@
 var temperature = function(degrees){ //here we declared a new variable, temperature, and assigned it to a function without a name
     console.log(`It is ${degrees} degrees outside today`);
 }
+
+//to call this anonymous function, we use the name of the variable followed by any arguments we wish to pass in
+temperature(90); //=> console logs "It is 90 degrees outside today"
+
+//The usage of arguments are how we specify what inputs we want to pass through our function.
+//And to decide what our function outputs, we use the keyword 'return'.
+
+var weather = function(sky){
+    if (sky === "cloudy"){
+        return "Bring an umbrella"
+    } else {
+        return "It's a beautiful day outside"
+    }
+}
+
+//SCOPES
+//scopes set the limitations on what variables our data can reach.
+
+//There are two types of scope: Global scope and Local Scope
+
+//Global scope is accessible from anywhere in your code.
+
+var x = 1 // The variable 'x' is declared and given the value of 1 in the global scope
+
+function addition(){
+    var y = 9
+    return x + y; //Here we are accessing x in the global scope and using it within our function's local scope.
+}
+
+addition(); //=> 10 (This function successfully takes a variable from the global scope to use in its execution)
+
+//Although, local scopes can use variables from the global scope, the inverse is not true.
+var z = x + y // y is not defined
+
+//the variable 'z' is able to read the x value of 1 because it is in the global scope. however, because y was declared within a functions scope, var z can not reach it.
+
+//CLOSURES
+
+//Functions can contain inner functions within itself. These inner functions will have access to the outermost function's scope but not vice versa.
+//When these functions are created, so are closures. 
+var count = (function(){ //the variable count is assigned to return value of a self-invoking function
+    var counter = 0; 
+//the function sets the counter to 0 and then returns an inner function expression, making count into a function that can still access the counter variable, thus making it a closure
+    return function(){
+        counter +=1;
+        console.log(counter);
+    }
+})();
+
+count(); //the first result of running the count function will return 1.
+count(); // the second result will return 2.
