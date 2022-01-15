@@ -391,3 +391,22 @@ var result = cubed(x);
 
 console.log(x); // => 5 (the value of x does not change after the cubed function is runs);
 console.log(result);// => 125
+
+//Complex data types are passed to a function by REFERENCE
+
+//this means that any changes made to the argument variable inside of the function affects the variable outside of the function.
+
+var obj = {a: 1, b: 2, c: 3};
+console.log(obj); //=> {a: 1, b: 2, c: 3}; this is the value before calling the object as an argument in a function
+
+changeObj(obj); //calling the function
+
+function changeObj(obj){
+    obj.c = 300;
+    console.log(obj);//=>{a: 1, b: 2, c: 300} inside of the function, the 'c' key is changed to 300
+}
+
+
+console.log(obj); //=>{a: 1, b: 2, c: 300} outside of the function, obj is now updated with the 'c' key value equaling 300.
+
+//as we can see, the changes made to the object's properties are still kept outside of the function.
