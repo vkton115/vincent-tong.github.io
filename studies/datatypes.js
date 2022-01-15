@@ -318,4 +318,76 @@ console.log(null + undefined);//=> NaN
 console.log("Hello" / undefined);//=> NaN
 console.log(Infinity * 0); //=> NaN
 
-//7 INFINITY
+//7 INFINITY & -INFINITY
+//Infinity, or positive infinity, is a property of the global object with a value greater than any finite number.
+console.log(Infinity > 1000000000000); //=> true
+
+//-Infinity, or negative infinity, is similar with the aspect of it being less than any other finite number
+console.log(-Infinity < -20000000000); //=> true
+
+//both are categorized as a number type
+console.log(typeof Infinity)//=> "number"
+console.log(typeof -Infinity)//=> "number"
+
+//Mathematical operations with infinity yield some interesting results
+
+console.log(Infinity + 1); //=> Infinity
+console.log(Infinity * Infinity);//=> Infinity
+console.log(Infinity / Infinity); //=> NaN
+console.log(Infinity % 2); //=> NaN
+console.log(42 / Infinity);//=> 0 (a number divided by Infinity results in 0)
+console.log(2/0);//=> Infinity (normally a number divided by 0 will result as undefined. In Javascript, it results in Infinity)
+
+//Javascript has a function that can determine if a value is finite
+console.log(Number.isFinite(Infinity));//=> false
+console.log(Number.isFinite(444*22));//=> true
+
+//Infinity is useful for comparisons of numbers such as finding the minimum value in an array of numbers
+function minValue(numArray){
+    let min = Infinity;
+    for (let num of numArray){
+        min = Math.min(min, num);
+    }
+    return min;
+}
+
+minValue([1, 0, -1, 55, 24]); //=> -1
+
+//8 PRIMITIVE VS COMPLEX DATA TYPES
+//primitive data types are data that is not an object and have no methods.
+
+//of the data types we've talked about the following are primitive: Strings, Numbers, Booleans, Undefine, & Null.
+//complex data types include: arrays, objects, date
+
+//primitive values are immutable, meaning they cannot be changed in the way objects, arrays, and functions can. 
+
+var primData = "string";
+console.log(primData); //=> "string"
+primData.toLowerCase();
+console.log(primData); //=> "string"
+
+//as seen above, the "string" datatype is unchanged by the .toLowerCase method.
+var arr = [];
+console.log(arr); //=> []
+arr.unshift(7);
+console.log(arr); //=> [7]
+//the above shows how an array, a complex data type, is changed by a method (.unshift) and therefore makes it mutable.
+
+//primitive data types can however be reassigned like so:
+var primData = primData.toUpperCase();
+console.log(primData);// => "STRING"
+
+//Primitive data types are passed to a function by COPY/VALUE
+
+//this means that javascript copies the value of the variables being passed in as arguments inside of the function like so:
+function cubed(num){
+    num = num * num * num;
+    return num;
+}
+var x = (5);
+var result = cubed(x);
+// when x is passed in to the cubed function, it is passed in as a COPY of x.
+//the cubed function changes the num variable  and will not change the value of x
+
+console.log(x); // => 5 (the value of x does not change after the cubed function is runs);
+console.log(result);// => 125
