@@ -9,12 +9,19 @@
  //1. FOR LOOPS
 
  //For loops will execute a code repeatedly until a specific stopping condition is met.
- //a for loop is declared with the 'for' keyword followed by 3 parameters: a starting expression, a conditional expression, and an increment expression, like so:
+ //a for loop is declared with the 'for' keyword followed by 3 arguments: a starting expression, a conditional expression, and an increment expression.
+ //The syntax for a For Loop is like so:
 
-for (count = 0; count <= 10; count++){
+//for (starting index; stoppping index; update){ <codeblock> }
+
+ //a For Loop defines a Starting Index to represent where in your datatype the first iteration will run.
+ //The Stopping Index is a conditional statement will allow the for loop to run as long as it remains true. When it is false, the loop will end.
+ //The Update argument is the change in the value of the Starting Index after each time the loop runs.
+
+for (count = 0; count <= 10; count++){ //here, the starting index is 0. Since 0, is less than or equal to 10, 
+    //the codeblock will run once and then increment the starting index by +1 and will continue running until the count is no longer less than or equal to 10.
     console.log(count); // => 0 1 2 3 4 5 6 7 8 9 10
 }
-//this will log every number, starting at zero (the starting expression), incremented by 1 each time the loop is run (the increment expression), until the conditional expression is deemed false.
 
 //you can also use for loops to iterate backwards like so:
 

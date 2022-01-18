@@ -70,6 +70,15 @@ console.log(stringOne === stringThree);//=> false. However, capitalization does 
 //Booleans are typically associated with conditional statements and are used to general control the flow of our program.
 //They achieve this by resulting in two possibilities: true or false
 
+//We can assign true or false values to variables like so:
+var truth = true;
+var lies = false;
+
+console.log(truth);//=> true
+console.log(lies);//=> false
+
+//We can also use conditional statements that result in boolean values to determine what codeblock to run like so:
+
 function test(num1, num2){
     if (num1 < num2){
         return num1 + num2;

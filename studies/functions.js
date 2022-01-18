@@ -19,7 +19,7 @@
  //To execute a function, we must initiate a function CALL
  //This is done by using the name of the function, followed by inputting data for any parameters it may have
 
- add(1, 7); //=> 8 (this function takes the first parameter, 1, and the second parameter, 7, and adds them together and then logs the value to the console)
+ add(1, 7); //=> 8 (this function takes the first argument of 1 and the second argument of 7, and adds them together and then logs the value to the console)
 
  //PARAMETERS VS ARGUMENTS
 
