@@ -100,10 +100,10 @@ var contestants = function(array){
 };
 
 
-
 // 3.
-var filterSpecies = dogs.filter(contestant  => contestant.species === "dog");
-
+var filterSpecies = dogs.filter(function(contestant){
+    return contestant.species === "dog";
+});
 
 
 // 4. 
@@ -113,35 +113,31 @@ var dogContestants = [...filterSpecies];
 
 // 5. 
 var dogsWithClasses = dogContestants.map(function(contestant){
-    if (contestant.weight >= 0 && contestant.weight <= 10){
+    if (contestant.weight > 0 && contestant.weight <= 10){
         contestant.class = "red";
-    } else if (contestant.weight >= 11 && contestant.weight <= 20){
+    } else if (contestant.weight > 10 && contestant.weight <= 20){
         contestant.class = "yellow";
     } else {
         contestant.class = "green";
     }
     return contestant;
-})
-    
-
+});
 
 // 6.
- var firstInClass = function(top, output = {}){
-    //base
-    if (top.length === 0){
-        return output;
-    }
+ var firstInClass = function(array, obj = {}){
+     //base
+     if (array.length === 0){
+         return obj;
+     }
 
-    //recursion
-    Object.assign(output, top[0]);
-    return firstInClass(top.slice(1), output);
-
-}
-
+     //recursion
+     Object.assign(obj, array[0]);
+     return firstInClass(array.slice(1), obj);
+ };
 
 
 // 7.
 var votes = dogs.reduce(function(accumulator, contestant){
     accumulator += contestant.votes;
     return accumulator;
-}, 0)
+}, 0);

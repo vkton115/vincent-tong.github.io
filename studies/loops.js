@@ -9,13 +9,13 @@
  //1. FOR LOOPS
 
  //For loops will execute a code repeatedly until a specific stopping condition is met.
- //a for loop is declared with the 'for' keyword followed by 3 arguments: a starting expression, a conditional expression, and an increment expression.
+ //a for loop is declared with the 'for' keyword followed by 3 arguments: a starting expression, a stop conditional expression, and an increment expression.
  //The syntax for a For Loop is like so:
 
-//for (starting index; stoppping index; update){ <codeblock> }
+//for (starting index; stoppping condition; update){ <codeblock> }
 
  //a For Loop defines a Starting Index to represent where in your datatype the first iteration will run.
- //The Stopping Index is a conditional statement will allow the for loop to run as long as it remains true. When it is false, the loop will end.
+ //The Stopping Condition is a statement that will allow the for loop to run as long as it remains true. When it is false, the loop will end.
  //The Update argument is the change in the value of the Starting Index after each time the loop runs.
 
 for (count = 0; count <= 10; count++){ //here, the starting index is 0. Since 0, is less than or equal to 10, 
